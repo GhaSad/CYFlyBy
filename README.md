@@ -45,9 +45,13 @@ Le projet est structuré en plusieurs parties :
 
 ### Commandes
 
+A lancer depuis le sbt shell terminal sur Intellij.
+
 ```bash
 cd CYFlyBy
 cd untitled
 sbt run
+```
 
+Ouvrir sur une page ineternet ce lien :
 http://localhost:8080
