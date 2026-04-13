@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CYFlyBy - Contrôle aérien</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CYFlyBy</p>
+        <h1>Tableau de bord du contrôle aérien</h1>
+      </div>
+      <div class="hero-actions">
+        <button class="primary" data-action="reset">Réinitialiser</button>
+        <button data-action="refresh">Actualiser</button>
+        <button data-action="complete">Terminer l'opération active</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>État global</h2>
+        <div class="grid stats" id="status-grid"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Schéma de trafic aérien</h2>
+
+        <div class="traffic-schema">
+
+          <div class="schema-zone schema-sky">
+            <div class="schema-zone-title">En vol</div>
+            <div id="schema-en-vol" class="schema-zone-content"></div>
+          </div>
+
+          <div class="schema-center">
+
+            <div class="schema-approach-label">Approche</div>
+            <div id="schema-approche" class="schema-lane"></div>
+
+            <div class="schema-runway-label">Piste</div>
+            <div id="schema-piste" class="schema-runway"></div>
+
+            <div class="schema-parking-label">Parking</div>
+            <div id="schema-parking" class="schema-parking"></div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <h2>Commandes rapides</h2>
+        <div class="actions-grid">
+          <div class="action-group">
+            <h3>Vols</h3>
+            <button data-request="AF447:takeoff">Décollage AF447</button>
+            <button data-request="AF447:landing">Atterrissage AF447</button>
+            <button data-request="AF112:takeoff">Décollage AF112</button>
+            <button data-request="AF112:landing">Atterrissage AF112</button>
+          </div>
+          <div class="action-group">
+            <h3>Météo</h3>
+            <button data-weather="bonne">Bonne</button>
+            <button data-weather="mauvaise">Mauvaise</button>
+            <button data-weather="critique">Critique</button>
+          </div>
+          <div class="action-group">
+            <h3>Piste</h3>
+            <button data-runway="free">Libre</button>
+            <button data-runway="occupied">Occupée</button>
+          </div>
+          <div class="action-group">
+            <h3>Communication</h3>
+            <button data-communication="ok">OK</button>
+            <button data-communication="lost">Perdue</button>
+          </div>
+          <div class="action-group">
+            <h3>Intrusion</h3>
+            <button data-intrusion="off">Off</button>
+            <button data-intrusion="on">On</button>
+          </div>
+          <div class="action-group">
+            <h3>Conflit d'approche</h3>
+            <button data-nearby="off">Off</button>
+            <button data-nearby="on">On</button>
+          </div>
+          <div class="action-group">
+            <h3>Technique AF447</h3>
+            <button data-technical="AF447:ok">OK</button>
+            <button data-technical="AF447:fault">Panne</button>
+          </div>
+          <div class="action-group">
+            <h3>Technique AF112</h3>
+            <button data-technical="AF112:ok">OK</button>
+            <button data-technical="AF112:fault">Panne</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <h2>Vols</h2>
+        <div class="cards" id="flights"></div>
+      </section>
+
+      <section class="panel" hidden>
+        <h2>Invariants métier</h2>
+        <div id="invariants" class="stack"></div>
+      </section>
+
+      <section class="panel" hidden>
+        <h2>Vue réseau de Pétri</h2>
+        <div id="petri" class="stack"></div>
+      </section>
+
+      <section class="panel wide">
+        <h2>Journal des événements</h2>
+        <div id="events" class="stack"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
